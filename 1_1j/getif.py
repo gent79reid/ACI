@@ -9,7 +9,7 @@ import re
 import cobra.mit.access
 import cobra.mit.session
 
-APIC = "172.21.208.173"
+APIC = "APIC IP"
 USER = "admin"
 PASS = "C1sc0123"
 
