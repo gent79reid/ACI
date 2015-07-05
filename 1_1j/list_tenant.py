@@ -6,6 +6,8 @@ from cobra.internal.codec.xmlcodec import toXMLStr
 
 import sys
 import logging
+import requests
+
 # Initialize logging
 logging.basicConfig()
 # Set the logging level to DEBUG
@@ -16,13 +18,14 @@ requests_log = logging.getLogger("requests.packages.urllib3")
 requests_log.setLevel(logging.INFO)
 requests_log.propagate = True
 
+requests.packages.urllib3.disable_warnings()
 
 aci_class = sys.argv[1]
 session = LoginSession('https://172.21.208.173', 'admin','C1sc0123')
 moDir = MoDirectory(session)
 moDir.login()
 
-import logging
+from cobra.mit.request import ConfigRequest
 
 #import the tenant class from the model
 from cobra.model.fv import Tenant
@@ -31,7 +34,12 @@ from cobra.model.fv import Tenant
 uniMo = moDir.lookupByDn('uni')
 
 # create the tenant object
-#fvTenantMo = Tenant(uniMo, 'ExampleCorp')
+fvTenantMo = Tenant(uniMo, 'test1111111111')
+fvTenantMo.delete()
+
+configReq = ConfigRequest()
+configReq.addMo(fvTenantMo)
+moDir.commit(configReq)
 
 obj_list = moDir.lookupByClass(aci_class)
 #
