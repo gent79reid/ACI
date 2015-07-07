@@ -29,7 +29,6 @@ from cobra.mit.request import ConfigRequest
 
 #import the tenant class from the model
 from cobra.model.fv import Tenant
-
 # Get the top level policy universe directory
 uniMo = moDir.lookupByDn('uni')
 
