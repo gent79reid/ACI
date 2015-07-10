@@ -2,7 +2,6 @@
 from __future__ import print_function
 from cobra.mit.access import MoDirectory
 from cobra.mit.session import LoginSession
-from cobra.model.fv import Tenant, BD
 from cobra.mit.request import DnQuery
 
 import requests
@@ -15,7 +14,7 @@ def main(host, username, password, tenant):
     moDir.login()
     dn_name = "uni/tn-" + tenant
     print(dn_name)
-    dnq = DnQuery('uni/tn-Tenent_REID')
+    dnq = DnQuery(dn_name)
     dnq.subtree = 'children'
     tenantMO = moDir.query(dnq)
     print("Tenant Name =>", tenantMO[0].name)
@@ -25,10 +24,10 @@ def main(host, username, password, tenant):
 if __name__ == '__main__':
     from argparse import ArgumentParser
     parser = ArgumentParser("list_BD")
-    parser.add_argument('-d', '--host', help='APIC host IP address',required=True)
-    parser.add_argument('-u', '--username', help='APIC login account',required=True)
-    parser.add_argument('-p', '--password', help='APIC login password',required=True)
-    parser.add_argument('-t', '--tenant', help='Tenant Name',required=True)
+    parser.add_argument('-d', '--host', help='APIC host IP address', required=True)
+    parser.add_argument('-u', '--username', help='APIC login account', required=True)
+    parser.add_argument('-p', '--password', help='APIC login password', required=True)
+    parser.add_argument('-t', '--tenant', help='Tenant Name', required=True)
     args = parser.parse_args()
 
-    main(args.host, args.username, args.password, args.tenant)
+main(args.host, args.username, args.password, args.tenant)
