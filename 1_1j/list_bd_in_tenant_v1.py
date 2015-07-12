@@ -3,7 +3,7 @@ from __future__ import print_function
 from cobra.mit.access import MoDirectory
 from cobra.mit.session import LoginSession
 from cobra.mit.request import DnQuery
-
+from cobra.model.fv import BD
 import requests
 requests.packages.urllib3.disable_warnings()
 
@@ -17,8 +17,7 @@ def main(host, username, password, tenant):
     dnq = DnQuery(dn_name)
     dnq.subtree = 'children'
     tenantMO = moDir.query(dnq)
-    print("Tenant Name =>", tenantMO[0].name)
-    for bdMO in tenantMO[0].BD:
+    for bdMO in tenantMO.BD:
         print("BD NAME => {", bdMO.name, "}")
 
 if __name__ == '__main__':

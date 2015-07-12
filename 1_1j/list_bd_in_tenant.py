@@ -16,6 +16,7 @@ def main(host, username, password, tenant):
 
     t_obj_list = moDir.lookupByClass("fvTenant")
     for t_mo in t_obj_list:
+        print("Tenant name =>",t_mo.dn)
         if t_mo.name == tenant:
             bd_list = moDir.lookupByClass("fvBD", t_mo.dn)
             for mo in bd_list:

@@ -32,13 +32,13 @@ from cobra.model.fv import Tenant
 # Get the top level policy universe directory
 uniMo = moDir.lookupByDn('uni')
 
-# create the tenant object
-fvTenantMo = Tenant(uniMo, 'test1111111111')
-fvTenantMo.delete()
+## create the tenant object
+#fvTenantMo = Tenant(uniMo, 'test1111111111')
+#fvTenantMo.delete()#
 
-configReq = ConfigRequest()
-configReq.addMo(fvTenantMo)
-moDir.commit(configReq)
+#configReq = ConfigRequest()
+#configReq.addMo(fvTenantMo)
+#moDir.commit(configReq)
 
 obj_list = moDir.lookupByClass(aci_class)
 #

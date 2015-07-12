@@ -72,8 +72,8 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--host', help='APIC host IP address', required=True)
     parser.add_argument('-u', '--username', help='APIC login account', required=True)
     parser.add_argument('-p', '--password', help='APIC login password', required=True)
-    parser.add_argument('-n', '--node', help='APIC login password', required=True)
-    parser.add_argument('-i', '--interface', help='APIC login password', required=True)
+    parser.add_argument('-n', '--node', type=int, help='APIC login password', required=True)
+    parser.add_argument('-i', '--interface', type=int, help='APIC login password', required=True)
     parser.add_argument('-b', '--debug', action='store_true', help='Turn on debug')
     args = parser.parse_args()
 
